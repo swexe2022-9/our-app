@@ -1,0 +1,2 @@
+class Thre < ApplicationRecord
+end
