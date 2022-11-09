@@ -9,10 +9,10 @@ class UsersController < ApplicationController
   
   def create
   @users = User.new(
-  uid: params[:user][:uname], 
+  uname: params[:user][:uname], 
   password: params[:user][:password],
-  password_confirmation: params[:user][:password_confirmation])
-  
+  password_confirmation: params[:user][:password_confirmation],
+  email: params[:user][:email])
     if @users.save
       session[:uname] = params[:uname]
       session[:pass] = params[:pass]

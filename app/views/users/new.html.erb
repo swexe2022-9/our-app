@@ -1,0 +1,22 @@
+<%= form_for @users , url: {action: :create} do |f| %>
+
+<%= f.label :uname, 'ユーザー名:' %>
+<%= f.text_field :uname %>
+<%= f.label :email, 'メールアドレス' %>
+<%= f.text_field :email %>
+<%= f.label :password_confirmation, 'パスワード:' %>
+<%= f.password_field :password_confirmation %>
+<%= f.label :password, 'パスワード:' %>
+<%= f.password_field :password %>
+<%= f.submit '新規登録' %>
+
+<% end %>
+
+<% if @users.errors.any? %>
+<h3>エラーがあります。</h3>
+<ul style="color: red">
+<% @users.errors.full_messages.each do |err| %>
+<li><%= err %></li>
+<% end %>
+</ul>
+<% end %>

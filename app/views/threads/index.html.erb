@@ -1,0 +1,6 @@
+<% if session[:login_uname] %>
+<p>トップページ（スレッド表示）</p>
+<%= link_to 'ログアウト', top_logout_path %>
+<% end %>
+<%=link_to '新規登録' , users_new_path %>
+<%=link_to 'ログイン' , top_login_path %>
