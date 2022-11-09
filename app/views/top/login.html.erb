@@ -1,0 +1,9 @@
+<%= form_tag('/top/login', method: :post) do %>
+<%= label_tag :uname, 'ユーザーID' %>
+<%= text_field_tag :uname %>
+<%= label_tag :email, 'メールアドレス' %>
+<%= text_field_tag :email%>
+<%= label_tag :pass, 'パスワード' %>
+<%= password_field_tag :pass %>
+<%= submit_tag 'ログイン'%>
+<% end %>
