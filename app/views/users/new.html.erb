@@ -1,5 +1,5 @@
 <%= form_for @users , url: {action: :create} do |f| %>
-
+<p>
 <%= f.label :uname, 'ユーザー名:' %>
 <%= f.text_field :uname %>
 <%= f.label :email, 'メールアドレス' %>
@@ -9,7 +9,7 @@
 <%= f.label :password, 'パスワード:' %>
 <%= f.password_field :password %>
 <%= f.submit '新規登録' %>
-
+</p>
 <% end %>
 
 <% if @users.errors.any? %>

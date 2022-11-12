@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
+  
+
   
   def new
     @users = User.new
@@ -18,17 +17,15 @@ class UsersController < ApplicationController
       session[:pass] = params[:pass]
       redirect_to root_path
   
-    
     else 
     render new_user_path
-    
     end
+    
   end
   
   def destroy
     @users = User.find(params[:id])
     @users.destroy
-    flash[:notice] = 'ユーザーを削除しました'
     redirect_to root_path
   end
   
