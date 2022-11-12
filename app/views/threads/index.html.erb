@@ -1,6 +1,20 @@
 <% if session[:login_uname] %>
-<p>トップページ（スレッド表示）</p>
 <%= link_to 'ログアウト', top_logout_path %>
+
+<%= link_to 'スレッド作成', new_thread_path %>
+
+    <% @threads.each do |t| %>
+    
+    <p><%= t.title %></p>
+    <%= link_to "コメントする"%>
+    <%= link_to "削除", "threads/#{t.id}",method: :delete %>
+    <%= link_to "編集", "threads/#{t.id}/edit" %>
+    
+    <% end %>
+
 <% end %>
+
+
+
 <%=link_to '新規登録' , users_new_path %>
 <%=link_to 'ログイン' , top_login_path %>
