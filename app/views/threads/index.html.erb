@@ -6,8 +6,9 @@
     <% @threads.each do |t| %>
     
     <p><%= t.title %></p>
-    <%= link_to "コメントする"%>
+    <% if session[:uname] == t.uname %>
     <%= link_to "削除", "threads/#{t.id}",method: :delete %>
+    <% end %>
     <%= link_to "編集", "threads/#{t.id}/edit" %>
     <%= link_to "このスレッドを見る", "threads/#{t.id}" %>
     

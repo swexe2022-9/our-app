@@ -9,7 +9,7 @@ class ThreadsController < ApplicationController
     end
     
     def create
-        @threads = Thre.new(title: params[:thre][:title])
+        @threads = Thre.new(title: params[:thre][:title],uname: session[:uname])
         if @threads.save
             redirect_to root_path
         end

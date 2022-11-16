@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   email: params[:user][:email])
     if @users.save
       session[:uname] = params[:uname]
-      session[:pass] = params[:pass]
       redirect_to root_path
   
     else 
