@@ -34,4 +34,8 @@ class ThreadsController < ApplicationController
             new_thread_path
         end
     end
+    
+    def show
+        @threds = Thre.all
+    end
 end
