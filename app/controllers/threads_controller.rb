@@ -21,6 +21,10 @@ class ThreadsController < ApplicationController
         redirect_to root_path
     end
     
+    def show
+        @threads = Thre.find(params[:id])
+    end
+    
     def edit
         @threads = Thre.find(params[:id])
     end
