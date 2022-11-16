@@ -39,7 +39,5 @@ class ThreadsController < ApplicationController
         end
     end
     
-    def show
-        @threds = Thre.all
-    end
+    
 end
