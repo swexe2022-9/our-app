@@ -5,6 +5,7 @@
     <% if session[:login_uname]  %>
     <%= link_to "削除", "threads/#{t.id}",method: :delete %>
      <%= link_to "編集", "threads/#{t.id}/edit" %>
+     <P></P>
     <% end %>
 
     <%= link_to "このスレッドにコメントする", "threads/#{t.id}" %>
