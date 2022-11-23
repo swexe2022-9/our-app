@@ -1,5 +1,10 @@
 <strong>スレッドタイトル:</strong>
 <%= @threads.title %>
 
-</p>
+<% @thread.each do |m| %>
+<%= m.message %>
+<% end %>
+
+
 <%= link_to 'Back', '/' %>
+
