@@ -12,10 +12,9 @@ class UsersController < ApplicationController
   email: params[:user][:email])
   
     if @users.save
-      session[:uname] = params[:uname]
       redirect_to root_path
     else 
-    render new_user_path
+      render new_user_path
     end
     
   end

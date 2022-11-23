@@ -1,5 +1,7 @@
+<%= flash[:alert] %>
+
 <%= form_tag('/top/login', method: :post) do %>
-<%= label_tag :uname, 'ユーザーID' %>
+<%= label_tag :uname, 'ユーザー名' %>
 <%= text_field_tag :uname %>
 <%= label_tag :email, 'メールアドレス' %>
 <%= text_field_tag :email%>
@@ -7,3 +9,4 @@
 <%= password_field_tag :pass %>
 <%= submit_tag 'ログイン'%>
 <% end %>
+
