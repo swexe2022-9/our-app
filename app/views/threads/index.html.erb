@@ -12,6 +12,7 @@
     <%= link_to "このスレッドにコメントする", "threads/#{t.id}" %>
 <% end %>
 
+
 <% if session[:login_uname] %>
     <%= link_to 'ログアウト', top_logout_path %>
     <%= link_to 'スレッド作成', new_thread_path %>
