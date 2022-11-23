@@ -5,6 +5,7 @@
     <% if session[:login_uname]  %>
     <%= link_to "削除", "threads/#{t.id}",method: :delete %>
      <%= link_to "編集", "threads/#{t.id}/edit" %>
+     <p></p>
     <% end %>
 
     <%= link_to "このスレッドにコメントする", "threads/#{t.id}" %>
@@ -15,5 +16,5 @@
     <%= link_to 'スレッド作成', new_thread_path %>
 <% else %>
     <%=link_to '新規登録' , users_new_path %>
-    <%=link_to 'ログイン' , top_login_path %>
+    <%=link_to 'ログインだよ' , top_login_path %>
 <% end %>
