@@ -6,10 +6,12 @@ class ThreadsController < ApplicationController
     
     def new 
         @threads = Thre.new
+        #@thread = Thre.new
     end
     
     def create
-        @threads = Thre.new(title: params[:thre][:title],message: params[:thre][:message])
+        @threads = Thre.new(title: params[:thre][:title])
+        #@thread = Thre.new(message: params[:thre][:message])
         if @threads.save
             redirect_to root_path
         end
@@ -38,6 +40,8 @@ class ThreadsController < ApplicationController
         else 
             new_thread_path
         end
+        #@thread = Thre.find(params[:id])
+        #@thread.update(title: params[:thre][:message])
     end
     
     
