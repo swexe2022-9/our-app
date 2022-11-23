@@ -1,22 +1,19 @@
-<% if session[:login_uname] %>
-<%= link_to 'ログアウト', top_logout_path %>
+<% @threads.each do |t| %>
 
-<%= link_to 'スレッド作成', new_thread_path %>
+<p><%= t.title %></p>
 
-    <% @threads.each do |t| %>
-    
-    <p><%= t.title %></p>
-    <% if session[:uname] == t.uname %>
+    <% if session[:login_uname]  %>
     <%= link_to "削除", "threads/#{t.id}",method: :delete %>
-    <% end %>
-    <%= link_to "編集", "threads/#{t.id}/edit" %>
-    <%= link_to "このスレッドを見る", "threads/#{t.id}" %>
-    
+     <%= link_to "編集", "threads/#{t.id}/edit" %>
     <% end %>
 
+    <%= link_to "このスレッドにコメントする", "threads/#{t.id}" %>
 <% end %>
 
-
-
-<%=link_to '新規登録' , users_new_path %>
-<%=link_to 'ログイン' , top_login_path %>
+<% if session[:login_uname] %>
+    <%= link_to 'ログアウト', top_logout_path %>
+    <%= link_to 'スレッド作成', new_thread_path %>
+<% else %>
+    <%=link_to '新規登録' , users_new_path %>
+    <%=link_to 'ログイン' , top_login_path %>
+<% end %>

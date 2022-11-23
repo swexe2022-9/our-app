@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   
-
-  
   def new
     @users = User.new
   end
@@ -12,10 +10,10 @@ class UsersController < ApplicationController
   password: params[:user][:password],
   password_confirmation: params[:user][:password_confirmation],
   email: params[:user][:email])
+  
     if @users.save
       session[:uname] = params[:uname]
       redirect_to root_path
-  
     else 
     render new_user_path
     end
