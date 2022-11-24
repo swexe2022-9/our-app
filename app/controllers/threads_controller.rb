@@ -2,14 +2,15 @@ class ThreadsController < ApplicationController
     
     def index
         @threads = Thre.all
+        #@users = User.find(params[:id])
     end
-    
     def new 
         @threads = Thre.new
         #@thread = Thre.new
     end
     
     def create
+    
         @threads = Thre.new(title: params[:thre][:title])
         #@thread = Thre.new(message: params[:thre][:message])
         if @threads.save
