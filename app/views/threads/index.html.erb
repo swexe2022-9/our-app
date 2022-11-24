@@ -12,6 +12,8 @@
     
         <%= link_to "このスレッドにコメントする", "threads/#{t.id}" %>
 
+   
+
 <% end %>
 
 <% if session[:login] %>
@@ -21,5 +23,7 @@
   
 <% else %>
     <%=link_to '新規登録' , users_new_path %>
+
     <%=link_to 'ログイン' , top_login_path %>
 <% end %>
+
