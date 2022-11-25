@@ -1,20 +1,29 @@
+<%= flash[:notice] %>
+
 <% @threads.each do |t| %>
+<p>-------------------------------------------</p>
+<p>タイトル：<%= t.title %></p>
+<p>スレを作ったユーザー：<%= User.find(t.user_id).uname %></p>
 
-<p><%= t.title %></p>
+        <% if session[:login_uid] == User.find(t.user_id).id and session[:login] %>
+                <%= link_to "削除", "threads/#{t.id}",method: :delete %>
+                <%= link_to "編集", "threads/#{t.id}/edit" %>
+        <% end %>
+    
+        <%= link_to "このスレッドにコメントする", "threads/#{t.id}" %>
 
-    <% if session[:login_uname]  %>
-    <%= link_to "削除", "threads/#{t.id}",method: :delete %>
-     <%= link_to "編集", "threads/#{t.id}/edit" %>
-     <p></p>
-    <% end %>
+   
 
-    <%= link_to "このスレッドにコメントする", "threads/#{t.id}" %>
 <% end %>
 
-<% if session[:login_uname] %>
+<% if session[:login] %>
     <%= link_to 'ログアウト', top_logout_path %>
     <%= link_to 'スレッド作成', new_thread_path %>
+    <p><%# @users.uname %>さんログイン中です</p>
+
 <% else %>
     <%=link_to '新規登録' , users_new_path %>
+    
     <%=link_to 'ログイン' , top_login_path %>
 <% end %>
+
