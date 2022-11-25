@@ -27,6 +27,7 @@ class ThreadsController < ApplicationController
     def show
         
         @threads = Thre.find(params[:id])
+        @comment = Comment.new
     end
     
     def edit
@@ -44,6 +45,7 @@ class ThreadsController < ApplicationController
         #@thread = Thre.find(params[:id])
         #@thread.update(title: params[:thre][:message])
     end
+    
     
     
 end

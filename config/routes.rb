@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-    resources:threads
+    resources:threads do
+        resources :comments, only: [:create, :destroy]
+    end
     resources:users, only: [:new, :create]
     get 'users/new'
     get 'top/login'
