@@ -19,7 +19,7 @@
 <% if session[:login] %>
     <%= link_to 'ログアウト', top_logout_path %>
     <%= link_to 'スレッド作成', new_thread_path %>
-    <p><%# @users.uname %>さんログイン中です</p>
+    <p><%= User.find(session[:login_uid]).uname%>さんようこそTECH_CHANNELへ！</p>
   
 <% else %>
     <%=link_to '新規登録' , users_new_path %>
