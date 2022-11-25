@@ -6,12 +6,14 @@ class TopController < ApplicationController
               logpass = BCrypt::Password.new(user.pass)
               if logpass == params[:pass]
 
-                    session[:login_uname] = params[:uname]
-
-                    redirect_to root_path
-              else 
-                    render 'login'
-
+                    session[:login] = params[:uname]
+                    session[:login_uid] = user.id
+                    
+                    redirect_to root_path , notice: "ログインしました"
+              else  
+                    
+                    flash.now[:alert] = "ログインできませんでした"
+                    redirect_to top_login_path
               end
          else 
             render 'login'
@@ -19,7 +21,7 @@ class TopController < ApplicationController
     end
     
     def logout
-        session.delete(:login_uname)
+        session.delete(:login)
         session.delete(:login_pass)
 
         redirect_to root_path
