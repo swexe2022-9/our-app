@@ -1,15 +1,6 @@
 <strong>スレッドタイトル:</strong>
 <%= @threads.title %>
 
-<% @thread.each do |m| %>
-<%= m.message %>
-<% end %>
-
-<%#=form_for @thread , url: {action: :create} do |f| %>
-<%#= f.label :message,"message" %>
-<%#= f.text_field :message %>
-<%#= f.submit '投稿' %>
-<%# end %>
 
 <%= link_to 'Back', '/' %>
 

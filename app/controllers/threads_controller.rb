@@ -6,12 +6,12 @@ class ThreadsController < ApplicationController
     
     def new 
         @threads = Thre.new
-        #@thread = Thre.new
+        @comments = Thre.new
     end
     
     def create
         @threads = Thre.new(title: params[:thre][:title])
-        #@thread = Thre.new(message: params[:thre][:message])
+        
         if @threads.save
             redirect_to root_path
         end
@@ -24,7 +24,7 @@ class ThreadsController < ApplicationController
     end
     
     def show
-        @thread = Thre.all#コメント
+        
         @threads = Thre.find(params[:id])
     end
     
