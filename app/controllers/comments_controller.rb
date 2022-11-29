@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
      else
        render "threads/show"
      end
+     
     end
  
    private
