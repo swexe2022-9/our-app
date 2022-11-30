@@ -10,10 +10,9 @@ class ThreadsController < ApplicationController
     end
     
     def create
-    
-        @threads = Thre.new(title: params[:thre][:title],
-        user_id: session[:login_uid])
-        #@thread = Thre.new(message: params[:thre][:message])
+
+        @threads = Thre.new(title: params[:thre][:title],user_id: session[:login_uid])
+
         if @threads.save
             redirect_to root_path
         end
@@ -26,8 +25,12 @@ class ThreadsController < ApplicationController
     end
     
     def show
- 
-        @threads = Thre.find(params[:id])
+
+        
+        #@threads = Thre.find(params[:id])
+        @threads = Thre.includes(:comments).find(params[:id])
+        @comment = Comment.new
+
     end
     
     def edit
