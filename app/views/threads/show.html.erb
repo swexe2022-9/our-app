@@ -4,5 +4,12 @@
 コメント: <%= f.text_area :comment %>
 <%= f.submit %>
 <% end %>
+<hr>
+<div class="comments">
+  <% @threads.comments.each do |comment| %>
+    <%= comment.comment %>
+  <% end %>
+  </div>
+<hr>
 <%= link_to 'Back', '/' %>
 
