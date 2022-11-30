@@ -7,7 +7,9 @@
 <hr>
 <div class="comments">
   <% @threads.comments.each do |comment| %>
+    <%= comment.created_at.in_time_zone('Tokyo') %>:
     <%= comment.comment %>
+    <br>
   <% end %>
   </div>
 <hr>
