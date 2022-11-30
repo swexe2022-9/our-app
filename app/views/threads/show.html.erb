@@ -1,6 +1,6 @@
 <strong>スレッドタイトル:</strong>
 <%= @threads.title %>
-<%= form_for @comment, thread_comments_path(@thread,@comment) do |f| %>
+<%= form_for @comment, url: thread_comments_path(@threads,@comment) do |f| %>
 コメント: <%= f.text_area :comment %>
 <%= f.submit %>
 <% end %>

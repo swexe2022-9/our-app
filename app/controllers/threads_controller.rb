@@ -46,6 +46,12 @@ class ThreadsController < ApplicationController
         #@thread.update(title: params[:thre][:message])
     end
     
+    private
+    
+    def params_thread
+      params.permit(:thread).permit(:comment)
+    end
+    
     
     
 end
