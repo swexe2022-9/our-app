@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 2022_11_25_061227) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer "thread_id"
+    t.integer "thre_id"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["thread_id"], name: "index_comments_on_thread_id"
+    t.index ["thre_id"], name: "index_comments_on_thre_id"
   end
 
   create_table "thres", force: :cascade do |t|

@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
+    
     def create
-     
-     @comment = Comment.new(comment: params[:comment][:comment])
-     #@comment = Comment.new(params_comment)
+     #@comment = Comment.new(comment: params[:comment][:comment])
+     @thread = Thre.find(params[:thread_id])
+     @comment = Comment.new(params_comment)
      ##@comment = @thread.comments.new(params_comment)
-     #@comment.thread = @thread
+     @comment.thre = @thread#モデルの
      #@comment = Comment.new(params_comment)
      
  
