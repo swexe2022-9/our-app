@@ -1,7 +1,7 @@
 <%= flash[:notice] %>
 
 <% @threads.each do |t| %>
-<p>-------------------------------------------</p>
+<hr>
 <p>タイトル：<%= t.title %></p>
 <p>スレを作ったユーザー：<%= User.find(t.user_id).uname %></p>
 
@@ -11,6 +11,7 @@
         <% end %>
     
         <%= link_to "このスレッドにコメントする", "threads/#{t.id}" %>
+        <br>
 
    
 
