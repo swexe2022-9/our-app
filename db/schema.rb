@@ -10,14 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_09_174750) do
+ActiveRecord::Schema.define(version: 2022_11_25_061227) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "thread_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["thread_id"], name: "index_comments_on_thread_id"
+  end
 
   create_table "thres", force: :cascade do |t|
     t.string "title"
     t.binary "image"
     t.integer "user_id"
     t.string "uname"
-    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

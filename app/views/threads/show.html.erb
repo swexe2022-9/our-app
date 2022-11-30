@@ -1,15 +1,8 @@
 <strong>スレッドタイトル:</strong>
 <%= @threads.title %>
-
-<% @thread.each do |m| %>
-<%= m.message %>
+<%= form_for @comment, url: thread_comments_path(@threads,@comment) do |f| %>
+コメント: <%= f.text_area :comment %>
+<%= f.submit %>
 <% end %>
-
-<%#=form_for @thread , url: {action: :create} do |f| %>
-<%#= f.label :message,"message" %>
-<%#= f.text_field :message %>
-<%#= f.submit '投稿' %>
-<%# end %>
-
 <%= link_to 'Back', '/' %>
 

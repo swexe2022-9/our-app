@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_many :comments, dependent: :destroy
     validates :password, presence: true, confirmation: true
     validates :uname, presence: true
     validates :email, presence: true

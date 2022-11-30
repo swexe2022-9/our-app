@@ -6,13 +6,12 @@ class ThreadsController < ApplicationController
     end
     def new 
         @threads = Thre.new
-        #@thread = Thre.new
+        @comments = Thre.new
     end
     
     def create
     
-        @threads = Thre.new(title: params[:thre][:title])
-        #@thread = Thre.new(message: params[:thre][:message])
+        @threads = Thre.new(title: params[:thre][:title],user_id: session[:login_uid])
         if @threads.save
             redirect_to root_path
         end
@@ -25,8 +24,10 @@ class ThreadsController < ApplicationController
     end
     
     def show
-        @thread = Thre.all#コメント
+        
         @threads = Thre.find(params[:id])
+        #@threads = Thre.includes(:comments).find(params[:id])
+        @comment = Comment.new
     end
     
     def edit
@@ -44,6 +45,13 @@ class ThreadsController < ApplicationController
         #@thread = Thre.find(params[:id])
         #@thread.update(title: params[:thre][:message])
     end
+    
+    private
+    
+    def params_thread
+      params.permit(:thread).permit(:comment)
+    end
+    
     
     
 end
