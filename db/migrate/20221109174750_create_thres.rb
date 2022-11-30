@@ -5,7 +5,7 @@ class CreateThres < ActiveRecord::Migration[5.2]
       t.binary :image
       t.integer :user_id
       t.string :uname
-      t.string :message
+      
       
 
       t.timestamps
