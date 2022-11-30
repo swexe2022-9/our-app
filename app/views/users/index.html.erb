@@ -1,0 +1,10 @@
+<% @users.each do |u| %>
+<p>-------------------------------------------</p>
+<p>ユーザー名：<%= u.uname %></p>
+<p>メールアドレス：<%= u.email %></p>
+
+<% end %>
+<p><%= User.find(session[:login_uid]).uname%>さんようこそTECH_CHANNELへ！</p>
+
+
+   

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     get 'top/login'
     post 'top/login'
     get 'top/logout'
-
+    
+    
+    get 'users/index'
     root 'threads#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

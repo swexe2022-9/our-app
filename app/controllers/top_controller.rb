@@ -9,10 +9,9 @@ class TopController < ApplicationController
                     session[:login] = params[:uname]
                     session[:login_uid] = user.id
                     
-                    redirect_to root_path , notice: "ログインしました"
+                    redirect_to root_path 
               else  
                     
-                    flash.now[:alert] = "ログインできませんでした"
                     redirect_to top_login_path
               end
          else 
