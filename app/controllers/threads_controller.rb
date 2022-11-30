@@ -26,6 +26,7 @@ class ThreadsController < ApplicationController
     end
     
     def show
+        #@threads = Thre.find(params[:id]
         @threads = Thre.includes(:comments).find(params[:id])
         @threads = Thre.find(params[:id])
     end
