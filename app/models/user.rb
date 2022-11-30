@@ -1,10 +1,7 @@
 class User < ApplicationRecord
-<<<<<<< HEAD
-    validates :password, presence: true,confirmation: true
-=======
+
     has_many :comments, dependent: :destroy
     validates :password, presence: true, confirmation: true
->>>>>>> master
     validates :uname, presence: true
     validates :email, presence: true, uniqueness: true
 

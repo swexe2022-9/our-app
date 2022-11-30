@@ -26,7 +26,7 @@ class ThreadsController < ApplicationController
     end
     
     def show
-        @thread = Thre.all#コメント
+ 
         @threads = Thre.find(params[:id])
     end
     

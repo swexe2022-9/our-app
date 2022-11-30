@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_11_25_061227) do
     t.binary "image"
     t.integer "user_id"
     t.string "uname"
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
