@@ -1,8 +1,12 @@
 class CommentsController < ApplicationController
     def create
-     @thread = Thre.find(params[:thread_id])
-     @comment = Comment.new(params_comment)
-     @comment.thread = @thread
+     
+     @comment = Comment.new(comment: params[:comment][:comment])
+     #@comment = Comment.new(params_comment)
+     ##@comment = @thread.comments.new(params_comment)
+     #@comment.thread = @thread
+     #@comment = Comment.new(params_comment)
+     
  
      if @comment.save
        redirect_to thread_url(@thread)

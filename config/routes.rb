@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
     resources:threads do
         resources :comments, only: [:create, :destroy]
     end
