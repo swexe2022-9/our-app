@@ -10,8 +10,13 @@ Rails.application.routes.draw do
     post 'top/login'
     get 'top/logout'
     
+<<<<<<< HEAD
     get 'users/index'
 
+=======
+    
+    get 'users/index'
+>>>>>>> f3f5d1ef2a22b34df80e59d41327f20f6925f524
     root 'threads#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
