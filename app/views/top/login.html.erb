@@ -1,12 +1,17 @@
+<%#<div class="movingbg vertical"></div>%>
 <%= flash[:alert] %>
-
+<center>
+    <br><br><br><br>
 <%= form_tag('/top/login', method: :post) do %>
-<%= label_tag :uname, 'ユーザー名' %>
-<%= text_field_tag :uname %>
-<%= label_tag :email, 'メールアドレス' %>
-<%= text_field_tag :email%>
-<%= label_tag :pass, 'パスワード' %>
-<%= password_field_tag :pass %>
-<%= submit_tag 'ログイン'%>
-<% end %>
+<%= label_tag :uname, 'USER NAME :' %>
+<%= text_field_tag :uname %><br><br><br><br>
+<%= label_tag :email, 'MAIL ADDRESS :' %>
+<%= text_field_tag :email%><br><br><br><br>
+<%= label_tag :pass, 'PASSWORD :' %>
+<%= password_field_tag :pass %><br><br><br><br>
 
+<%# <%= submit_tag 'ログイン'%> 
+<%= submit_tag 'LOGIN', class: 'topbutton' %>
+</center>
+
+<% end %>
