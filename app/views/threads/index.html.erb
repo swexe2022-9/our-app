@@ -6,11 +6,11 @@
 <p>スレを作ったユーザー：<%= User.find(t.user_id).uname %></p>
 
         <% if session[:login_uid] == User.find(t.user_id).id and session[:login] %>
-                <%= link_to "削除", "threads/#{t.id}",method: :delete %>
-                <%= link_to "編集", "threads/#{t.id}/edit" %>
+                <%= link_to "削除", "threads/#{t.id}",method: :delete , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
+                <%= link_to "編集", "threads/#{t.id}/edit", class: 'button' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
         <% end %>
     
-        <%= link_to "このスレッドにコメントする", "threads/#{t.id}" %>
+        <%= link_to "コメント", "threads/#{t.id}", class: 'button' %>
         <br>
 
    
@@ -19,13 +19,19 @@
 
 
 <% if session[:login] %>
-
+    <br>
+    <hr>
+    <br>
     <%= link_to 'ログアウト', top_logout_path %>
     <%= link_to 'スレッド作成', new_thread_path %>
     
     <p><%= User.find(session[:login_uid]).uname%>さんようこそTECH_CHANNEL</p>
   
 <% else %>
+    <br>
+    <hr>
+    <br>
+
     <%=link_to '新規登録' , users_new_path %>
     
     <%=link_to 'ログイン' , top_login_path %>
