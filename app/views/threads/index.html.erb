@@ -4,6 +4,7 @@
 <hr>
 <p>タイトル：<%= t.title %></p>
 <p>スレを作ったユーザー：<%= User.find(t.user_id).uname %></p>
+<p><%= image_tag "/get_image/#{t.id}" %></p>
 
         <% if session[:login_uid] == User.find(t.user_id).id and session[:login] %>
                 <%= link_to "削除", "threads/#{t.id}",method: :delete %>
