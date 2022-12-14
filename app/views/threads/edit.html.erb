@@ -1,5 +1,7 @@
 <%= form_for @threads , url: {action: :update} do |f| %>
 <%= f.label :title, 'メッセージ:' %>
 <%= f.text_field :title %>
+<%= f.label :image, '画像アップロード' %>
+<%= f.file_field :image %>
 <%= f.submit '更新' %>
 <% end %>

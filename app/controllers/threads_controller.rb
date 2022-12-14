@@ -10,13 +10,18 @@ class ThreadsController < ApplicationController
     end
     
     def create
-    
+        
+
         @threads = Thre.new(title: params[:thre][:title],
-        user_id: session[:login_uid])
+        user_id: session[:login_uid],
+        image: params[:thre][:image].read)
+       
         #@thread = Thre.new(message: params[:thre][:message])
-        if @threads.save
+        if @threads.save 
             redirect_to root_path
         end
+        
+        
     end
     
     def destroy
@@ -26,9 +31,10 @@ class ThreadsController < ApplicationController
     end
     
     def show
-        #@threads = Thre.find(params[:id]
+        @threads = Thre.find(params[:id])
         @threads = Thre.includes(:comments).find(params[:id])
         @comment = Comment.new
+        
     end
     
     def edit
@@ -36,8 +42,10 @@ class ThreadsController < ApplicationController
     end
     
     def update
+        file = params[:thre][:image].read
         @threads = Thre.find(params[:id])
-        @threads.update(title: params[:thre][:title])
+        @threads.update(title: params[:thre][:title],
+        image: file)
         if @threads.save
             redirect_to root_path
         else 
@@ -45,6 +53,11 @@ class ThreadsController < ApplicationController
         end
         #@thread = Thre.find(params[:id])
         #@thread.update(title: params[:thre][:message])
+    end
+    
+    def get_image
+        @threads = Thre.find(params[:id]) 
+        send_data @threads.image, disposition: :inline, type: 'image/jpg''image/png'
     end
     
     

@@ -22,6 +22,7 @@
   <% @threads.comments.each do |comment| %>
     <%= comment.created_at.in_time_zone('Tokyo') %>:
     <%= comment.comment %>
+    <%= User.find(comment.user_id).uname %>
     <br>
   <% end %>
   </div>

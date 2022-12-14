@@ -5,6 +5,8 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.text :comment
       t.timestamps
       t.index :thre_id
+      t.binary :image
+      t.integer :user_id
     end
   end
 end
