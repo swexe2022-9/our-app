@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
      @comment.thre = @thread#モデルの
      #@comment = Comment.new(params_comment)
      
- 
      if @comment.save
        redirect_to thread_url(@thread)
      else
