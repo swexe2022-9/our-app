@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
      @comment.thre = @thread#モデルの
      #@comment = Comment.new(params_comment)
      
- 
+     
+     
      if @comment.save
        redirect_to thread_url(@thread)
      else
@@ -16,10 +17,11 @@ class CommentsController < ApplicationController
      end
      
     end
+
  
    private
- 
+   
    def params_comment
-     params.require(:comment).permit(:comment)
+     params.require(:comment).permit(:comment,:user_id).merge(user_id: session[:login_uid])
    end
 end
