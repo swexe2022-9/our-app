@@ -6,12 +6,22 @@
 <% end %>
 <hr>
 <div class="comments">
-  <% @threads.comments.each do |comment| %>
-    <%= comment.created_at.in_time_zone('Tokyo') %>:
-    <%= comment.comment %>
-    <%= User.find(comment.user_id).uname %>
-    <br>
-  <% end %>
+<% @threads.comments.each do |comment| %>
+    <% if session[:login_uid] == User.find(comment.user_id).id and session[:login] %>
+        <p style="text-align:right">
+        <%= comment.created_at.in_time_zone('Tokyo') %>:
+        <%= comment.comment %>
+        <%= User.find(comment.user_id).uname %>
+        </p>
+    <% else %>
+        <p style="text-align:left">
+        <%= comment.created_at.in_time_zone('Tokyo') %>:
+        <%= comment.comment %>
+        <%= User.find(comment.user_id).uname %>
+        </p>
+        <br>
+    <% end %>
+<% end %>
   </div>
 <hr>
 <%= link_to 'Back', '/' %>
