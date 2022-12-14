@@ -4,6 +4,7 @@
 <hr>
 <p>タイトル：<%= t.title %></p>
 <p>スレを作ったユーザー：<%= User.find(t.user_id).uname %></p>
+
 <p><%= image_tag "/get_image/#{t.id}", size: '300x200' %></p>
 
         <% if session[:login_uid] == User.find(t.user_id).id and session[:login] %>

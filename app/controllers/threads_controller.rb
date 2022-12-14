@@ -11,10 +11,15 @@ class ThreadsController < ApplicationController
     
     def create
         
-
-        @threads = Thre.new(title: params[:thre][:title],
-        user_id: session[:login_uid],
-        image: params[:thre][:image].read)
+        if params[:thre][:image] == nil
+            
+            @threads = Thre.new(title: params[:thre][:title],
+            user_id: session[:login_uid])
+        else
+             @threads = Thre.new(title: params[:thre][:title],
+            user_id: session[:login_uid],
+            image: params[:thre][:image].read)
+        end
        
         #@thread = Thre.new(message: params[:thre][:message])
         if @threads.save 
@@ -57,7 +62,7 @@ class ThreadsController < ApplicationController
     
     def get_image
         @threads = Thre.find(params[:id]) 
-        send_data @threads.image, disposition: :inline, type: 'image/jpg''image/png'
+        send_data @threads.image, disposition: :inline, type: 'image/jpg'
     end
     
     
