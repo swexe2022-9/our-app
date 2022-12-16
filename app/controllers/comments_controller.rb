@@ -24,6 +24,6 @@ class CommentsController < ApplicationController
    private
    
    def params_comment
-     params.require(:comment).permit(:comment,:user_id,:uidentifer).merge(user_id: session[:login_uid])
+     params.require(:comment).permit(:comment,:user_id).merge(user_id: session[:login_uid])
    end
 end

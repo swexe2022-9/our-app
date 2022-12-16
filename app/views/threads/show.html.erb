@@ -2,7 +2,7 @@
 
 <strong>スレッドタイトル:</strong>
 <%= @threads.title %>
-
+<p><%= image_tag "/get_image/#{@threads.id}", size: '300x200' %></p>
 <% if @comment.errors.any? %>
 <h3>エラーがあります。</h3>
 <ul style="color: red">
@@ -20,7 +20,9 @@
 <hr>
 <div class="comments">
 
+
 <% @threads.comments.each do |comment| %>
+
     <% if session[:login_uid] == User.find(comment.user_id).id and session[:login] %>
         <p style="text-align:right">
         <%= comment.created_at.in_time_zone('Tokyo') %>:
