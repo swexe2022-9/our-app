@@ -7,6 +7,7 @@ ruby '2.6.3'
 gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3' , group: :development
+gem 'pg', '0.21.0', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -67,4 +68,4 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
-gem 'pg', '0.21.0', group: :production
+
