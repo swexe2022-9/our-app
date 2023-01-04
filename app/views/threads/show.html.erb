@@ -1,4 +1,16 @@
-
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <a class="my-0 mr-md-auto font-weight-normal" href="/">TechCh</a>
+      <nav class="my-2 my-md-0 mr-md-3">
+       <% if session[:login] %>
+            <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path %></a>
+            <a class="p-2 text-dark" href="#"><%= link_to 'スレッド作成', new_thread_path %></a>
+        <% else %>
+            <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path %></a>
+            <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path %></a>
+        <% end %>
+      </nav>
+   
+</div>
 
 <strong>スレッドタイトル:</strong>
 <%= @threads.title %>
@@ -10,12 +22,13 @@
 <li><%= err %></li>
 <% end %>
 <% end %>
-
+<% if session[:login] %>
 <%= form_for @comment, url: thread_comments_path(@threads,@comment) do |f| %>
 コメント: <%= f.text_area :comment %>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
 <%= f.submit %>
+<% end %>
 <% end %>
 <hr>
 <div class="comments">
@@ -23,7 +36,7 @@
 
 <% @threads.comments.each do |comment| %>
 
-    <% if session[:login_uid] == User.find(comment.user_id).id and session[:login] %>
+    <% if session[:login_uid] == User.find(comment.user_id).id %>
         <p style="text-align:right">
         <%= comment.created_at.in_time_zone('Tokyo') %>:
         <%= comment.comment %>

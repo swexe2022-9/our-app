@@ -1,12 +1,32 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <a class="my-0 mr-md-auto font-weight-normal" href="/">TechCh</a>
+      <nav class="my-2 my-md-0 mr-md-3">
+       <% if session[:login] %>
+            <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path %></a>
+            <a class="p-2 text-dark" href="#"><%= link_to 'スレッド作成', new_thread_path %></a>
+        <% else %>
+            <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path %></a>
+            <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path %></a>
+        <% end %>
+      </nav>
+   
+</div>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+    
+    
+<% if session[:login] %>
+ <p><%= User.find(session[:login_uid]).uname%>さんようこそTECH_CHANNELへ</p>
+ <% end %>
 <%= flash[:notice] %>
 
 <% @threads.each do |t| %>
 <hr>
 <p>タイトル：<%= t.title %></p>
-<p>スレを作ったユーザー：<%= User.find(t.user_id).uname %></p>
+
 
 <p><%= image_tag "/get_image/#{t.id}", size: '300x200' %></p>
-
+<p>スレを作ったユーザー：<%= User.find(t.user_id).uname %></p>
         <% if session[:login_uid] == User.find(t.user_id).id and session[:login] %>
                 <%= link_to "削除", "threads/#{t.id}",method: :delete , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
                 <%= link_to "編集", "threads/#{t.id}/edit", class: 'button' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
@@ -28,7 +48,7 @@
     <%= link_to 'スレッド作成', new_thread_path %>
     
     
-    <p><%= User.find(session[:login_uid]).uname%>さんようこそTECH_CHANNEL</p>
+  
   
 
 <% else %>
@@ -38,7 +58,7 @@
 
     <%=link_to '新規登録' , users_new_path %>
     
-    <%=link_to 'ログイン' , top_login_path %>
+    
 <% end %>
 
 
