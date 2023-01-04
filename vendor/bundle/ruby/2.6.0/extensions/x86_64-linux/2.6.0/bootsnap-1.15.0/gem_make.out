@@ -1,0 +1,28 @@
+current directory: /home/ubuntu/environment/SW_dev/tech_ch/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.15.0/ext/bootsnap
+/home/ubuntu/.rvm/rubies/ruby-2.6.3/bin/ruby -I /home/ubuntu/.rvm/rubies/ruby-2.6.3/lib/ruby/2.6.0 -r ./siteconf20221227-18983-fj8bmd.rb extconf.rb
+creating Makefile
+
+current directory: /home/ubuntu/environment/SW_dev/tech_ch/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.15.0/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /home/ubuntu/environment/SW_dev/tech_ch/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.15.0/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+bootsnap.c: In function ‘bs_rb_fetch’:
+bootsnap.c:323:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   char * cachedir = RSTRING_PTR(cachedir_v);
+   ^~~~
+bootsnap.c: In function ‘bs_rb_precompile’:
+bootsnap.c:350:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   char * cachedir = RSTRING_PTR(cachedir_v);
+   ^~~~
+bootsnap.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-cast-function-type’
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/ubuntu/environment/SW_dev/tech_ch/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.15.0/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -m 0755 bootsnap.so ./.gem.20221227-18983-m5xur3/bootsnap
