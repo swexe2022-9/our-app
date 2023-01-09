@@ -4,22 +4,23 @@
         <nav class="navbar navbar-expand-lg" style="background-color:#00FF00">
             <div class="container-fluid" >
     
+                
                 <%= form_with url: search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword, value: @keyword %>
-                <%= f.submit "検索" %>
+                    <%= f.text_field :keyword, value: @keyword %>
+                    <%= f.submit "検索" %>
                 <% end %>
+
                   
                 
                 <% if session[:login] %>
-                  
+            
                   <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_blog_path %></a>
-                  <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path %></a>
-                    <a class="p-2 text-dark" href="#"><%=link_to 'スレッド一覧' , threads_path %></a>
+                  <a class="p-2 text-dark" href="#"><%=link_to 'スレッド一覧' , threads_path %></a>
                     <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path %></a>
+                    <a class="p-2 text-dark" href="#"><%= link_to 'スレッド作成', new_thread_path %></a>
                 <% else %>
                     <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path %></a>
                     <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path %></a>
-                    <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path %></a>
                     <a class="p-2 text-dark" href="#"><%=link_to 'スレッド一覧' , threads_path %></a>
                 <% end %>
                 
@@ -28,10 +29,30 @@
     </nav>
 
 </div>
-<%= form_for @threads , url: {action: :create} do |f| %>
-<%= f.label :title,"タイトル" %>
-<%= f.text_field :title %>
-<%= f.label :image, '画像' %>
-<%= f.file_field :image %>
-<%= f.submit '投稿' %>
+<body style="background-color:#EEEEEE">
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+    
+    
+<% if session[:login] %>
+ <p><%= User.find(session[:login_uid]).uname%>さんようこそTECH_CHANNELへ</p>
+ <% end %>
+<%= flash[:notice] %>
+
+<% @blogs.each do |b| %>
+<hr>
+<p>タイトル：<%= b.title %></p>
+<p>内容：<%= b.body %></p>
+<p><%= image_tag "/get_blog_image/#{b.id}", size: '300x200' %></p>
+<p>ブログを作ったユーザー：<%= User.find(b.user_id).uname %></p>
+        <% if session[:login_uid] == User.find(b.user_id).id and session[:login] %>
+                <%= link_to "削除", "blogs/#{b.id}",method: :delete %>     
+                <%= link_to "編集", "blogs/#{b.id}/edit" %>    
+        <% end %>
+    
+
 <% end %>
+
+
+</body>
