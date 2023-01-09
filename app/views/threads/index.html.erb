@@ -4,22 +4,25 @@
         <nav class="navbar navbar-expand-lg" style="background-color:#00FF00">
             <div class="container-fluid" >
     
-                  <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
+                
+                <%= form_with url: search_path, method: :get, local: true do |f| %>
+                    <%= f.text_field :keyword, value: @keyword %>
+                    <%= f.submit "検索" %>
+                <% end %>
+
                   
                 
                 <% if session[:login] %>
-                  <a class="p-2 text-dark" href="#"><%= link_to 'マイプロフィール', top_logout_path %></a>
-                  <a class="p-2 text-dark" href="#"><%= link_to '新規ブログ作成', new_thread_path %></a>
                   
-                 
+                    <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_blog_path %></a>
+                    <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path %></a>
                     <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path %></a>
                     <a class="p-2 text-dark" href="#"><%= link_to 'スレッド作成', new_thread_path %></a>
                 <% else %>
                     <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path %></a>
                     <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path %></a>
+                    <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path %></a>
+ 
                 <% end %>
                 
             </div>
@@ -54,6 +57,8 @@
         <br>
 
 <% end %>
+
+
 </body>
 
 

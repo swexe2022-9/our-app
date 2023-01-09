@@ -2,7 +2,6 @@ class ThreadsController < ApplicationController
     
     def index
         @threads = Thre.all
-        #@users = User.find(params[:id])
     end
     def new 
         @threads = Thre.new
@@ -16,7 +15,7 @@ class ThreadsController < ApplicationController
             @threads = Thre.new(title: params[:thre][:title],
             user_id: session[:login_uid])
         else
-             @threads = Thre.new(title: params[:thre][:title],
+            @threads = Thre.new(title: params[:thre][:title],
             user_id: session[:login_uid],
             image: params[:thre][:image].read)
         end
@@ -39,7 +38,6 @@ class ThreadsController < ApplicationController
         @threads = Thre.find(params[:id])
         @threads = Thre.includes(:comments).find(params[:id])
         @comment = Comment.new
-        
     end
     
     def edit
@@ -65,5 +63,11 @@ class ThreadsController < ApplicationController
         send_data @threads.image, disposition: :inline, type: 'image/jpg'
     end
     
+    
+    def search
+        @threads = Thre.search(params[:keyword])
+        @keyword = params[:keyword]
+        render "index"
+    end
     
 end

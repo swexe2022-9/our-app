@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         
     end
     get 'get_image/:id', to: 'threads#get_image'
-    get 'get_image/:id', to: 'comments#get_image'
+     
     resources:users, only: [:new, :create]
     
     get 'users/new'
@@ -16,7 +16,13 @@ Rails.application.routes.draw do
 
     
     get 'users/index'
-
+    
+    get 'search' => 'threads#search'
+    
+    resources:blogs
+    get 'get_blog_image/:id', to: 'blogs#get_blog_image'
+    
+    
     root 'threads#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
