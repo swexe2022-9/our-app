@@ -21,7 +21,7 @@
 //= require jquery_ujs
 
 
-$(function() {
+$(document).on('turbolinks:load',(function() {
   var $textarea = $('#comment_comment');
   var lineHeight = parseInt($textarea.css('lineHeight'));
   $textarea.on('input', function(e) {
@@ -29,4 +29,4 @@ $(function() {
     $(this).height(lineHeight * lines);
   });
   console.log($textarea)
-});
+}));
