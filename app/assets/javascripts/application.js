@@ -17,3 +17,16 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require jquery
+//= require jquery_ujs
+
+
+$(function() {
+  var $textarea = $('#comment_comment');
+  var lineHeight = parseInt($textarea.css('lineHeight'));
+  $textarea.on('input', function(e) {
+    var lines = ($(this).val() + '\n').match(/\n/g).length;
+    $(this).height(lineHeight * lines);
+  });
+  console.log($textarea)
+});

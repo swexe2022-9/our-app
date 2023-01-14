@@ -1,7 +1,7 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#00FF00">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#66CC66">
     <a class="my-0 mr-md-auto font-weight-normal" href="/">TechCh</a>
     <nav class="my-2 my-md-0 mr-md-3">
-        <nav class="navbar navbar-expand-lg" style="background-color:#00FF00">
+        <nav class="navbar navbar-expand-lg" style="background-color:#66CC66">
             <div class="container-fluid" >
     
                 <%= form_with url: search_path, method: :get, local: true do |f| %>
@@ -10,7 +10,7 @@
                 <% end %>      
                 
                 <% if session[:login] %>
-                  <a class="p-2 text-dark" href="#"><%= link_to 'マイプロフィール', top_logout_path %></a>
+                  <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path %></a>
                   <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_thread_path %></a>
                   
                  
@@ -26,47 +26,58 @@
     </nav>
 
 </div>
-<strong>スレッドタイトル:</strong>
-<%= @threads.title %>
-<p><%= image_tag "/get_image/#{@threads.id}", size: '300x200' %></p>
-<% if @comment.errors.any? %>
-<h3>エラーがあります。</h3>
-<ul style="color: red">
-<% @comment.errors.full_messages.each do |err| %>
-<li><%= err %></li>
-<% end %>
-<% end %>
-<% if session[:login] %>
-<%= form_for @comment, url: thread_comments_path(@threads,@comment) do |f| %>
-コメント: <%= f.text_area :comment %>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
-<%= f.submit %>
-<% end %>
-<% end %>
-<hr>
+
+    <div style ="width: 800px; margin: auto; padding:10px 10px; text-align:center;">
+       
+            <article class="article" style=" background-color:#EEEEEE; border-radius:20px 20px 20px 20px;">
+                    <%= @threads.title %>
+                    <p><%= image_tag "/get_image/#{@threads.id}", size: '300x200' %></p>
+                    <% if @comment.errors.any? %>
+                    <h3>エラーがあります。</h3>
+                    <ul style="color: red">
+                    <% @comment.errors.full_messages.each do |err| %>
+                    <li><%= err %></li>
+                    <% end %>
+                    <% end %>
+                    
+                    <hr>
+            </article>
+            
+    </div>
+
+                    
 <div class="comments">
+        <% @threads.comments.each do |comment| %>
+        
+            <% if session[:login_uid] == User.find(comment.user_id).id %>
+                <p style="text-align:right">
+                <%= safe_join(comment.comment.to_s.split("\n"),tag(:br))%><br>
+                <%= comment.created_at.in_time_zone('Tokyo') %>
+                <%= User.find(comment.user_id).uname %>
+                </p>
+            <% else %>
+                <p style="text-align:left">
+                <%= comment.comment %><br>
+                <%= comment.created_at.in_time_zone('Tokyo') %>
+                <%= User.find(comment.user_id).uname %>
+                </p>
+                <br>
+            <% end %>
+        <% end %>
 
-
-<% @threads.comments.each do |comment| %>
-
-    <% if session[:login_uid] == User.find(comment.user_id).id %>
-        <p style="text-align:right">
-        <%= comment.created_at.in_time_zone('Tokyo') %>:
-        <%= comment.comment %>
-        <%= User.find(comment.user_id).uname %>
-        </p>
-    <% else %>
-        <p style="text-align:left">
-        <%= comment.created_at.in_time_zone('Tokyo') %>:
-        <%= comment.comment %>
-        <%= User.find(comment.user_id).uname %>
-        </p>
-        <br>
-    <% end %>
-<% end %>
-
-  </div>
+</div>
 <hr>
+<div class="">
+    <% if session[:login] %>
+        <%= form_for @comment, url: thread_comments_path(@threads,@comment) do |f| %>
+        <%= f.text_area :comment,size: "50x1" %>
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+        <%= f.submit "コメント" %>
+        <% end %>
+    <% end %>
+</div>
 <%= link_to 'Back', '/' %>
+
+
 
