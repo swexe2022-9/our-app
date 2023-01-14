@@ -1,11 +1,11 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#00FF00">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#66CC66">
     <a class="my-0 mr-md-auto font-weight-normal" href="/">TechCh</a>
     <nav class="my-2 my-md-0 mr-md-3">
-        <nav class="navbar navbar-expand-lg" style="background-color:#00FF00">
+        <nav class="navbar navbar-expand-lg" style="background-color:##66CC66">
             <div class="container-fluid" >
     
                 
-                <%= form_with url: search_path, method: :get, local: true do |f| %>
+                <%= form_with url: search_blog_path, method: :get, local: true do |f| %>
                     <%= f.text_field :keyword, value: @keyword %>
                     <%= f.submit "検索" %>
                 <% end %>
@@ -29,7 +29,7 @@
     </nav>
 
 </div>
-<body style="background-color:#EEEEEE">
+<body style="background-color:#DDDDDD">
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
@@ -40,19 +40,26 @@
  <% end %>
 <%= flash[:notice] %>
 
+
+<strong>ブログ一覧</strong>
+
 <% @blogs.each do |b| %>
-<hr>
-<p>タイトル：<%= b.title %></p>
-<p>内容：<%= b.body %></p>
-<p><%= image_tag "/get_blog_image/#{b.id}", size: '300x200' %></p>
-<p>ブログを作ったユーザー：<%= User.find(b.user_id).uname %></p>
-        <% if session[:login_uid] == User.find(b.user_id).id and session[:login] %>
-                <%= link_to "削除", "blogs/#{b.id}",method: :delete %>     
-                <%= link_to "編集", "blogs/#{b.id}/edit" %>    
-        <% end %>
-    
 
+<div style ="width: 800px; margin: auto; padding:10px 10px; text-align:center;">
+       
+            <article class="article" style=" background-color:#EEEEEE; border-radius:20px 20px 20px 20px;">
+                    <p><%= link_to "#{b.title}", "blogs/#{b.id}"  %></p>
+                    <p>作成者：<%= User.find(b.user_id).uname %></p>
+                    <p>投稿時間：<%= b.created_at %></p>
+            
+                    <% if session[:login_uid] == User.find(b.user_id).id and session[:login] %>
+                            <%= link_to "削除", "blogs/#{b.id}",method: :delete %>     
+                            <%= link_to "編集", "blogs/#{b.id}/edit" %>    
+                    <% end %>
+            </article>
+           
+</div>
 <% end %>
-
-
+        
+ 
 </body>
