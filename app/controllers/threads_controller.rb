@@ -3,6 +3,7 @@ class ThreadsController < ApplicationController
     def index
         @threads = Thre.all
     end
+    
     def new 
         @threads = Thre.new
         #@thread = Thre.new
@@ -18,10 +19,10 @@ class ThreadsController < ApplicationController
             @threads = Thre.new(title: params[:thre][:title],
             user_id: session[:login_uid],
             image: params[:thre][:image].read)
+
         end
-       
-        #@thread = Thre.new(message: params[:thre][:message])
-        if @threads.save 
+        
+        if @threads.save
             redirect_to root_path
         end
         

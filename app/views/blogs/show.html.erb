@@ -1,8 +1,10 @@
+
 <%= stylesheet_link_tag "application", :media => "all" %>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#cab8d9">
     <a class="my-0 mr-md-auto font-weight-normal" href="/"><span style="color:#FFFFFF;font-weight:bold;font-size : 50pt">TechCh</span></a>
     <nav class="my-2 my-md-0 mr-md-3">
         <nav class="navbar navbar-expand-lg" style="background-color:#cab8d9">
+
             <div class="container-fluid" >
     
                 <%= form_with url: search_path, method: :get, local: true do |f| %>
@@ -11,7 +13,7 @@
                 <% end %>      
                 
                 <% if session[:login] %>
-                  <a class="p-2 text-dark" href="#"><%= link_to 'マイプロフィール', top_logout_path %></a>
+                  <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path %></a>
                   <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_thread_path %></a>
                   
                  
@@ -29,17 +31,19 @@
 
 <hr>
 
-<body style="background-color:#EEEEEE">
-<% @blogs.each do |b| %>
-
-        <p>タイトル：<%= b.title %></p>
-        <p>内容：<%= b.body %></p>
-        <p><%= image_tag "/get_blog_image/#{b.id}", size: '300x200' %></p>
-        <p>ブログを作ったユーザー：<%= User.find(b.user_id).uname %></p>
-        <br>
-<% end %>
-
-  </div>
+<body style="background-color:#DDDDDD">
+    <div style ="width: 800px; margin: auto; padding:10px 10px; text-align:center;">
+       
+            <article class="article" style=" background-color:#EEEEEE; border-radius:20px 20px 20px 20px;">
+                <p>作成者：<%= User.find(@blogs.user_id).uname %></p>
+                <p><%= @blogs.title %></p>
+                <p><%= @blogs.body %></p>
+                <p><%= image_tag "/get_blog_image/#{@blogs.id}", size: '300x200' %></p>
+                
+<br>
+            </article>
+            
+    </div>
 <hr>
-<%= link_to 'Back', '/' %>
+<%= link_to 'Back', blogs_path %>
 </body>
