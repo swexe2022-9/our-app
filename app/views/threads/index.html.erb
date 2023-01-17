@@ -56,29 +56,22 @@
 
 <div style ="width: 800px; margin: auto; padding:10px 10px; text-align:center;">
        
-            <article class="article" style=" background-color:#EEEEEE; border-radius:20px 20px 20px 20px;">
-                <p><%= link_to "#{t.title}", "threads/#{t.id}"  %></p>
-                <p>スレ作成者：<%= User.find(t.user_id).uname %></p>
-                        <% if session[:login_uid] == User.find(t.user_id).id and session[:login] %>
-                                <%= link_to "削除", "threads/#{t.id}",method: :delete %>
-                                <%= link_to "編集", "threads/#{t.id}/edit" %>  
-                        <% end %>
-                    
-                        <%= link_to "コメント", "threads/#{t.id}" %>
-                        <br>
-                
-            </article>
 
-
-<p><%= image_tag "/get_image/#{t.id}", size: '300x200' %></p>
+<hr>
 <p>スレを作ったユーザー：<%= User.find(t.user_id).uname %></p>
+<%= t.title %>
+<p><%= image_tag "/get_image/#{t.id}", size: '300x200' %></p>
+
         <% if session[:login_uid] == User.find(t.user_id).id and session[:login] %>
-                <%= link_to "削除", "threads/#{t.id}",method: :delete , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
-                <%= link_to "編集", "threads/#{t.id}/edit", class: 'button' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+                <%= link_to "削除", "threads/#{t.id}",method: :delete , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
+                <%= link_to "編集", "threads/#{t.id}/edit", class: 'button' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <% end %>
-    
+        
         <%= link_to "コメント", "threads/#{t.id}", class: 'button' %>
+        
         <br>
+        
+
 
 
 </div>

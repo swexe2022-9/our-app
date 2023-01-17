@@ -1,4 +1,3 @@
-
 <%= stylesheet_link_tag "application", :media => "all" %>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#cab8d9">
     <a class="my-0 mr-md-auto font-weight-normal" href="/"><span style="color:#FFFFFF;font-weight:bold;font-size : 50pt">TechCh</span></a>
@@ -8,20 +7,28 @@
             <div class="container-fluid" >
     
                 <%= form_with url: search_path, method: :get, local: true do |f| %>
-                    <%= f.text_field :keyword, value: @keyword %>
-                    <%= f.submit "検索" %>
-                <% end %>      
+                <p style="text-align: right">
+                <%= f.text_field :keyword, value: @keyword %>
+                <%= f.submit "検索" , class: 'button'%>
+                </p>
+                <br><br>
+                <% end %>
+                  
                 
                 <% if session[:login] %>
-                  <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path %></a>
-                  <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_thread_path %></a>
-                  
-                 
-                    <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path %></a>
-                    <a class="p-2 text-dark" href="#"><%= link_to 'スレッド作成', new_thread_path %></a>
+                  <span style="color:#FFFFFF;font-weight:bold;">
+                  <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_blog_path , class: 'button' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="p-2 text-dark" href="#"><%=link_to 'スレッド一覧' , threads_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </span>
                 <% else %>
-                    <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path %></a>
-                    <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path %></a>
+                    <span style="color:#FFFFFF;font-weight:bold;">
+                    <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="p-2 text-dark" href="#"><%=link_to 'スレッド一覧' , threads_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </span>
                 <% end %>
                 
             </div>
@@ -72,15 +79,18 @@
 <hr>
 <div class="">
     <% if session[:login] %>
+        <center>
         <%= form_for @comment, url: thread_comments_path(@threads,@comment) do |f| %>
-        <%= f.text_area :comment,size: "50x1" %>
+        <%= f.text_area :comment,size: "50x5" %>
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
-        <%= f.submit "コメント" %>
+        <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet"><br>
+        <%= f.submit "コメント" ,class: 'button'%>
         <% end %>
+        </center>
     <% end %>
 </div>
-<%= link_to 'Back', '/' %>
+<br><br><br><br>
+<%= link_to 'Back', '/',class: 'button' %>
 
 
 

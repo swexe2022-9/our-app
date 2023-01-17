@@ -23,6 +23,7 @@
                     <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     <a class="p-2 text-dark" href="#"><%= link_to 'スレッド作成', new_thread_path , class: 'button' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     </span>
+                    
                 <% else %>
                     <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -37,7 +38,7 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
     
-    
+<center>
 <% if session[:login] %>
  <p><%= User.find(session[:login_uid]).uname%>さんようこそTECH_CHANNELへ</p>
  <% end %>
@@ -50,32 +51,17 @@
 <p>内容：<%= b.body %></p>
 <p><%= image_tag "/get_blog_image/#{b.id}", size: '300x200' %></p>
 <p>ブログを作ったユーザー：<%= User.find(b.user_id).uname %></p>
+<p>投稿時間：<%= b.created_at %></p>
         <% if session[:login_uid] == User.find(b.user_id).id and session[:login] %>
                 <%= link_to "削除", "blogs/#{b.id}",method: :delete , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
                 <%= link_to "編集", "blogs/#{b.id}/edit", class: 'button' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
         <% end %>
-    
+    <% end %>
+<hr>
 
 
-<strong>ブログ一覧</strong>
 
-<% @blogs.each do |b| %>
-
-<div style ="width: 800px; margin: auto; padding:10px 10px; text-align:center;">
-       
-            <article class="article" style=" background-color:#EEEEEE; border-radius:20px 20px 20px 20px;">
-                    <p><%= link_to "#{b.title}", "blogs/#{b.id}"  %></p>
-                    <p>作成者：<%= User.find(b.user_id).uname %></p>
-                    <p>投稿時間：<%= b.created_at %></p>
-            
-                    <% if session[:login_uid] == User.find(b.user_id).id and session[:login] %>
-                            <%= link_to "削除", "blogs/#{b.id}",method: :delete %>     
-                            <%= link_to "編集", "blogs/#{b.id}/edit" %>    
-                    <% end %>
-            </article>
-           
-</div>
-<% end %>
         
- 
+
 </body>
+</center>
