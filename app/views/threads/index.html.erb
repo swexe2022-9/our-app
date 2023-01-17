@@ -58,12 +58,13 @@
        
 
 
-
-<p><%= image_tag "/get_image/#{t.id}", size: '300x200' %></p>
 <p>スレを作ったユーザー：<%= User.find(t.user_id).uname %></p>
+<%= t.title %>
+<p><%= image_tag "/get_image/#{t.id}", size: '300x200' %></p>
+
         <% if session[:login_uid] == User.find(t.user_id).id and session[:login] %>
-                <%= link_to "削除", "threads/#{t.id}",method: :delete , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
-                <%= link_to "編集", "threads/#{t.id}/edit", class: 'button' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+                <%= link_to "削除", "threads/#{t.id}",method: :delete , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
+                <%= link_to "編集", "threads/#{t.id}/edit", class: 'button' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <% end %>
         
         <%= link_to "コメント", "threads/#{t.id}", class: 'button' %>

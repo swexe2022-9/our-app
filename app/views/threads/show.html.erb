@@ -81,14 +81,15 @@
     <% if session[:login] %>
         <center>
         <%= form_for @comment, url: thread_comments_path(@threads,@comment) do |f| %>
-        <%= f.text_area :comment,size: "50x1" %>
+        <%= f.text_area :comment,size: "50x5" %>
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet"><br>
         <%= f.submit "コメント" ,class: 'button'%>
         <% end %>
         </center>
     <% end %>
 </div>
+<br><br><br><br>
 <%= link_to 'Back', '/',class: 'button' %>
 
 
