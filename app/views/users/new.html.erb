@@ -2,6 +2,7 @@
 <h3>エラーがあります。</h3>
 <ul style="color: red">
 <% @users.errors.full_messages.each do |err| %>
+<body>
 <li><%= err %></li>
 <% end %>
 </ul>
@@ -22,4 +23,4 @@
 </center>
 </p>
 <% end %>
-
+</body>
