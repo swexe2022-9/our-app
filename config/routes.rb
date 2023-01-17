@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'users/index'
     
     get 'search' => 'threads#search'
+    get 'search_blog' => 'blogs#search_blog'
     
     resources:blogs
     get 'get_blog_image/:id', to: 'blogs#get_blog_image'

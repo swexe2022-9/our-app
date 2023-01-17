@@ -1,3 +1,4 @@
+
 <%= stylesheet_link_tag "application", :media => "all" %>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#cab8d9">
     <a class="my-0 mr-md-auto font-weight-normal" href="/"><span style="color:#FFFFFF;font-weight:bold;font-size : 50pt">TechCh</span></a>
@@ -7,6 +8,7 @@
     
                 <%= form_with url: search_path, method: :get, local: true do |f| %>
                     <p style="text-align: right">
+
                     <%= f.text_field :keyword, value: @keyword %>
                     <%= f.submit "検索" , class: 'button' %>
                     </p><br><br>
@@ -30,7 +32,7 @@
         </nav>
     </nav>
 </div>
-<body style="background-color:#EEEEEE">
+<body style="background-color:#DDDDDD">
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
@@ -40,6 +42,7 @@
  <p><%= User.find(session[:login_uid]).uname%>さんようこそTECH_CHANNELへ</p>
  <% end %>
 <%= flash[:notice] %>
+
 
 <% @blogs.each do |b| %>
 <hr>
@@ -53,7 +56,26 @@
         <% end %>
     
 
+
+<strong>ブログ一覧</strong>
+
+<% @blogs.each do |b| %>
+
+<div style ="width: 800px; margin: auto; padding:10px 10px; text-align:center;">
+       
+            <article class="article" style=" background-color:#EEEEEE; border-radius:20px 20px 20px 20px;">
+                    <p><%= link_to "#{b.title}", "blogs/#{b.id}"  %></p>
+                    <p>作成者：<%= User.find(b.user_id).uname %></p>
+                    <p>投稿時間：<%= b.created_at %></p>
+            
+                    <% if session[:login_uid] == User.find(b.user_id).id and session[:login] %>
+                            <%= link_to "削除", "blogs/#{b.id}",method: :delete %>     
+                            <%= link_to "編集", "blogs/#{b.id}/edit" %>    
+                    <% end %>
+            </article>
+           
+</div>
 <% end %>
-
-
+        
+ 
 </body>

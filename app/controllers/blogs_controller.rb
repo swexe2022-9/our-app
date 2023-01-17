@@ -21,10 +21,9 @@ class BlogsController < ApplicationController
             body: params[:blog][:body],
             user_id: session[:login_uid],
             image: params[:blog][:image].read)
+
         end
-       
-  
-        if @blogs.save 
+        if @blogs.save
             redirect_to blogs_path
         end
         
@@ -61,7 +60,14 @@ class BlogsController < ApplicationController
     def get_blog_image
         @blogs = Blog.find(params[:id]) 
         send_data @blogs.image, disposition: :inline, type: 'image/jpg'
+ 
     end
+ 
     
+    def search_blog
+        @blogs = Blog.search_blog(params[:keyword])
+        @keyword = params[:keyword]
+        render "index"
+    end
     
 end
