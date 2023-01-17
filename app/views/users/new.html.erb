@@ -9,15 +9,17 @@
 
 <%= form_for @users , url: {action: :create} do |f| %>
 <p>
-<%= f.label :uname, 'ユーザー名:' %>
-<%= f.text_field :uname %>
-<%= f.label :email, 'メールアドレス' %>
-<%= f.text_field :email %>
-<%= f.label :password_confirmation, 'パスワード:' %>
-<%= f.password_field :password_confirmation %>
-<%= f.label :password, 'パスワード:' %>
-<%= f.password_field :password %>
-<%= f.submit '新規登録' %>
+<center>
+<%= f.label :uname, 'USER NAME:' %>
+<%= f.text_field :uname %><br><br><br><br><br>
+<%= f.label :email, 'MAIL:' %>
+<%= f.text_field :email %><br><br><br><br><br>
+<%= f.label :password_confirmation, 'PASSWORD:' %>
+<%= f.password_field :password_confirmation %><br><br><br><br><br>
+<%= f.label :password, 'PASSWORD:' %>
+<%= f.password_field :password %><br><br><br><br><br>
+<%= f.submit 'JOIN', class: 'topbutton' %>
+</center>
 </p>
 <% end %>
 
