@@ -1,38 +1,47 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#00FF00">
-    <a class="my-0 mr-md-auto font-weight-normal" href="/">TechCh</a>
+<%= stylesheet_link_tag "application", :media => "all" %>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#cab8d9">
+    <a class="my-0 mr-md-auto font-weight-normal" href="/"><span style="color:#FFFFFF;font-weight:bold;font-size : 50pt">TechCh</span></a>
     <nav class="my-2 my-md-0 mr-md-3">
-        <nav class="navbar navbar-expand-lg" style="background-color:#00FF00">
+        <nav class="navbar navbar-expand-lg" style="background-color:#cab8d9">
             <div class="container-fluid" >
     
                 <%= form_with url: search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword, value: @keyword %>
-                <%= f.submit "検索" %>
-                <% end %>
+                    <p style="text-align: right">
+                    <%= f.text_field :keyword, value: @keyword %>
+                    <%= f.submit "検索" , class: 'button' %>
+                    </p><br><br>
+                <% end %>      
                 
                 <% if session[:login] %>
+                  <span style="color:#FFFFFF;font-weight:bold;">
+                  <a class="p-2 text-dark" href="#"><%= link_to 'プロフィール', top_logout_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_thread_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                   
-                  <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path %></a>
-                    <a class="p-2 text-dark" href="#"><%=link_to 'スレッド一覧' , threads_path %></a>
-                    <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path %></a>
-                    <a class="p-2 text-dark" href="#"><%= link_to 'スレッド作成', new_thread_path %></a>
+                 
+                    <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="p-2 text-dark" href="#"><%= link_to 'スレッド作成', new_thread_path , class: 'button' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </span>
                 <% else %>
-                    <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path %></a>
-                    <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path %></a>
-                    <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path %></a>
-                    <a class="p-2 text-dark" href="#"><%=link_to 'スレッド一覧' , threads_path %></a>
+                    <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 <% end %>
                 
             </div>
         </nav>
     </nav>
-
 </div>
+<center>
 <%= form_for @blogs , url: {action: :create} do |f| %>
-<%= f.label :title,"タイトル" %>
+<%= f.label :title,"タイトル:" %>
 <%= f.text_field :title %>
-<%= f.label :body,"内容" %>
-<%= f.text_field :body %>
+<br><br><br><br><br><br><br>
+<%= f.label :body,"内容:" %>
+<br>
+<%= f.text_area :body , :size=>"60x10" %>
+<br><br><br><br><br><br><br>
 <%= f.label :image, '画像' %>
 <%= f.file_field :image %>
-<%= f.submit '投稿' %>
+<br><br><br><br><br><br><br>
+<%= f.submit '投稿', class: 'button' %>
+</center>
 <% end %>
