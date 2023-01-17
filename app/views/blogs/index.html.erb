@@ -1,33 +1,36 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#66CC66">
-    <a class="my-0 mr-md-auto font-weight-normal" href="/">TechCh</a>
+
+<%= stylesheet_link_tag "application", :media => "all" %>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3" style="background-color:#cab8d9">
+    <a class="my-0 mr-md-auto font-weight-normal" href="/"><span style="color:#FFFFFF;font-weight:bold;font-size : 50pt">TechCh</span></a>
     <nav class="my-2 my-md-0 mr-md-3">
-        <nav class="navbar navbar-expand-lg" style="background-color:##66CC66">
+        <nav class="navbar navbar-expand-lg" style="background-color:#cab8d9">
             <div class="container-fluid" >
     
-                
-                <%= form_with url: search_blog_path, method: :get, local: true do |f| %>
-                    <%= f.text_field :keyword, value: @keyword %>
-                    <%= f.submit "検索" %>
-                <% end %>
+                <%= form_with url: search_path, method: :get, local: true do |f| %>
+                    <p style="text-align: right">
 
-                  
+                    <%= f.text_field :keyword, value: @keyword %>
+                    <%= f.submit "検索" , class: 'button' %>
+                    </p><br><br>
+                <% end %>      
                 
                 <% if session[:login] %>
-            
-                  <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_blog_path %></a>
-                  <a class="p-2 text-dark" href="#"><%=link_to 'スレッド一覧' , threads_path %></a>
-                    <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path %></a>
-                    <a class="p-2 text-dark" href="#"><%= link_to 'スレッド作成', new_thread_path %></a>
+                  <span style="color:#FFFFFF;font-weight:bold;">
+                  <a class="p-2 text-dark" href="#"><%= link_to 'プロフィール', top_logout_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_thread_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  
+                 
+                    <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="p-2 text-dark" href="#"><%= link_to 'スレッド作成', new_thread_path , class: 'button' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </span>
                 <% else %>
-                    <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path %></a>
-                    <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path %></a>
-                    <a class="p-2 text-dark" href="#"><%=link_to 'スレッド一覧' , threads_path %></a>
+                    <a class="p-2 text-dark" href="#"><%=link_to '新規登録' , users_new_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="p-2 text-dark" href="#"><%=link_to 'ログイン' , top_login_path , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 <% end %>
                 
             </div>
         </nav>
     </nav>
-
 </div>
 <body style="background-color:#DDDDDD">
 
@@ -39,6 +42,19 @@
  <p><%= User.find(session[:login_uid]).uname%>さんようこそTECH_CHANNELへ</p>
  <% end %>
 <%= flash[:notice] %>
+
+
+<% @blogs.each do |b| %>
+<hr>
+<p>タイトル：<%= b.title %></p>
+<p>内容：<%= b.body %></p>
+<p><%= image_tag "/get_blog_image/#{b.id}", size: '300x200' %></p>
+<p>ブログを作ったユーザー：<%= User.find(b.user_id).uname %></p>
+        <% if session[:login_uid] == User.find(b.user_id).id and session[:login] %>
+                <%= link_to "削除", "blogs/#{b.id}",method: :delete , class: 'button'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
+                <%= link_to "編集", "blogs/#{b.id}/edit", class: 'button' %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+        <% end %>
+    
 
 
 <strong>ブログ一覧</strong>
