@@ -1,16 +1,17 @@
 # README
+# This app is for all engineer!
 
 ## Start docker in this order
 
-### docker-compose build 
+### >>> docker-compose build 
 
-### docker-compose run web bundle exec rake db:create
+### >>> docker-compose run web bundle exec rake db:create
 
-###  docker-compose run web bundle exec rake db:migrate
+### >>> docker-compose run web bundle exec rake db:migrate
 
-### docker-compose up
+### >>> docker-compose up
 
-### http://localhost:3000/
+### >>> http://localhost:3000/
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
