@@ -1,4 +1,4 @@
 module BlogsHelper
-    
+
     
 end

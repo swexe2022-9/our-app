@@ -28,11 +28,11 @@
 
 </div>
 <%= form_for @blogs , url: {action: :update} do |f| %>
-<%= f.label :title, 'タイトル:' %>
-<%= f.text_field :title %>
-<%= f.label :body, '内容:' %>
-<%= f.text_field :body %>
-<%= f.label :image, '画像' %>
-<%= f.file_field :image %>
-<%= f.submit '更新' %>
+<p><%= f.label :title,"タイトル" %></p>
+<p><%= f.text_area :title,size: "30x1" %></p>
+<p><%= f.label :body,"内容" %></p>
+<p><%= f.text_area :body ,size: "80x20" %></p>
+<p><%= f.label :image, '画像' %></p>
+<p><%= f.file_field :image %></p>
+<p><%= f.submit '更新' %></p>
 <% end %>

@@ -1,0 +1,66 @@
+current directory: /home/ubuntu/environment/SW_dev/tech_ch/vendor/bundle/ruby/2.6.0/gems/redcarpet-2.3.0/ext/redcarpet
+/home/ubuntu/.rvm/rubies/ruby-2.6.3/bin/ruby -I /home/ubuntu/.rvm/rubies/ruby-2.6.3/lib/ruby/2.6.0 -r ./siteconf20230117-7155-19w30vl.rb extconf.rb
+creating Makefile
+
+current directory: /home/ubuntu/environment/SW_dev/tech_ch/vendor/bundle/ruby/2.6.0/gems/redcarpet-2.3.0/ext/redcarpet
+make "DESTDIR=" clean
+
+current directory: /home/ubuntu/environment/SW_dev/tech_ch/vendor/bundle/ruby/2.6.0/gems/redcarpet-2.3.0/ext/redcarpet
+make "DESTDIR="
+compiling autolink.c
+compiling buffer.c
+compiling houdini_href_e.c
+compiling houdini_html_e.c
+compiling html.c
+compiling html_smartypants.c
+html_smartypants.c: In function ‘squote_len’:
+html_smartypants.c:92:39: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  static char* single_quote_list[] = { "'", "&#39;", "&#x27;", "&apos;", NULL };
+                                       ^~~
+html_smartypants.c:92:44: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  static char* single_quote_list[] = { "'", "&#39;", "&#x27;", "&apos;", NULL };
+                                            ^~~~~~~
+html_smartypants.c:92:53: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  static char* single_quote_list[] = { "'", "&#39;", "&#x27;", "&apos;", NULL };
+                                                     ^~~~~~~~
+html_smartypants.c:92:63: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  static char* single_quote_list[] = { "'", "&#39;", "&#x27;", "&apos;", NULL };
+                                                               ^~~~~~~~
+html_smartypants.c: In function ‘smartypants_squote’:
+html_smartypants.c:137:30: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+    uint8_t next_char = (size > 1+next_squote_len) ? text[1+next_squote_len] : 0;
+                              ^
+html_smartypants.c: In function ‘smartypants_cb__amp’:
+html_smartypants.c:232:2: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+  int len = squote_len(text, size);
+  ^~~
+html_smartypants.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-cast-function-type’
+compiling markdown.c
+markdown.c:67:15: warning: ‘char_underline’ declared ‘static’ but never defined [-Wunused-function]
+ static size_t char_underline(struct buf *ob, struct sd_markdown *rndr, uint8_t *data, size_t offset, size_t size);
+               ^~~~~~~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-cast-function-type’
+compiling rc_markdown.c
+compiling rc_render.c
+rc_render.c: In function ‘rndr_link_attributes’:
+rc_render.c:257:28: warning: variable ‘rndr’ set but not used [-Wunused-but-set-variable]
+  struct rb_redcarpet_rndr *rndr;
+                            ^~~~
+rc_render.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-cast-function-type’
+compiling stack.c
+linking shared-object redcarpet.so
+
+current directory: /home/ubuntu/environment/SW_dev/tech_ch/vendor/bundle/ruby/2.6.0/gems/redcarpet-2.3.0/ext/redcarpet
+make "DESTDIR=" install
+/usr/bin/install -m 0755 redcarpet.so ./.gem.20230117-7155-siuxpm

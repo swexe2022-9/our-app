@@ -28,10 +28,13 @@
     </nav>
 
 </div>
+
+<div style ="width: 800px; margin: auto; padding:10px 10px; text-align:center;">
 <%= form_for @threads , url: {action: :create} do |f| %>
-<%= f.label :title,"タイトル" %>
-<%= f.text_field :title %>
-<%= f.label :image, '画像' %>
-<%= f.file_field :image %>
-<%= f.submit '投稿' %>
+<p><%= f.label :title,"タイトル" %></p>
+<p><%= f.text_area :title,size: "80x1" %></p>
+<p><%= f.label :image, '画像' %></p>
+<p><%= f.file_field :image %></p>
+<p><%= f.submit '投稿' %></p>
 <% end %>
+</div>

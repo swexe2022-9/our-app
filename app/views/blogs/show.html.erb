@@ -11,7 +11,7 @@
                 
                 <% if session[:login] %>
                   <a class="p-2 text-dark" href="#"><%=link_to 'ブログ一覧' , blogs_path %></a>
-                  <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_thread_path %></a>
+                  <a class="p-2 text-dark" href="#"><%= link_to 'ブログ作成', new_blog_path %></a>
                   
                  
                     <a class="p-2 text-dark" href="#"><%= link_to 'ログアウト', top_logout_path %></a>
@@ -33,10 +33,11 @@
     <div style ="width: 800px; margin: auto; padding:10px 10px; text-align:center;">
        
             <article class="article" style=" background-color:#EEEEEE; border-radius:20px 20px 20px 20px;">
-                <p>作成者：<%= User.find(@blogs.user_id).uname %></p>
-                <p><%= @blogs.title %></p>
-                <p><%= @blogs.body %></p>
+               
+                <p><%= markdown(@blogs.title) %></p>
+                <div style="text-align:left; display: inline-block;"><%= markdown(@blogs.body) %></div>
                 <p><%= image_tag "/get_blog_image/#{@blogs.id}", size: '300x200' %></p>
+                <p>作成者：<%= User.find(@blogs.user_id).uname %></p>
                 
 <br>
             </article>

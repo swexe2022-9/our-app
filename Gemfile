@@ -71,4 +71,8 @@ end
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+# マークダウン形式で表示するためのgem
+gem 'redcarpet', '~> 2.3.0'
+# シンタックスハイライトに対応させるためのgem
+gem 'coderay'
 
